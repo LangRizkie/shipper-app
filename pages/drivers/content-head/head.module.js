@@ -1,14 +1,16 @@
-import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Styles from './head.module.scss'
 
-export default function Head({ listDrivers, listDriversFilter, setListDriversFilter }) {
+export default function Head({ listDrivers, setListDriversFilter }) {
+  const router = useRouter()
+
   const changeHandler = value => {
     const results = listDrivers.results.filter(drivers => 
       drivers.name.first.toLowerCase().includes(value.toLowerCase()))
     
     setListDriversFilter({
       ...listDrivers, results: results || []
-    })
+    })  
   }
 
   return (

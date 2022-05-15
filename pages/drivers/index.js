@@ -1,26 +1,28 @@
 import Styles from './driver.module.scss'
 import Head from './content-head/head.module'
 import List from './content-list/list.module'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
+export default function Drivers() {
+  const [listDrivers, setListDrivers] = useState({})
+  const [listDriversFilter, setListDriversFilter] = useState({})
 
-export async function getServerSideProps() {
-  const response = await fetch('https://randomuser.me/api/?results=30')
-  const drivers = await response.json()
+  useEffect(() => {
+    async function fetchDrivers() {
+      const response = await fetch('https://randomuser.me/api/?results=30')
+      const drivers = await response.json()
 
-  return {
-    props: { drivers }
-  }
-}
+      setListDrivers(drivers)
+      setListDriversFilter(drivers)
+    }
 
-export default function Drivers({ drivers }) {
-  const [listDriversFilter, setListDriversFilter] = useState(drivers)
+    fetchDrivers()
+  }, [])
 
   return (
     <div className={Styles.container}>
       <Head
-        listDrivers={drivers}
-        listDriversFilter={listDriversFilter}
+        listDrivers={listDrivers}
         setListDriversFilter={setListDriversFilter}
       />
       <List

@@ -11,7 +11,7 @@ export default function List({ listDriversFilter, limit = 5 }) {
   const [listOnPage, setListOnPage] = useState({})
 
   useEffect(() => {
-    if (Object.keys(router.query).length < 1) {
+    if (router.isReady && Object.keys(router.query).length < 1) {
       router.replace('/drivers?page=1')
     }
 

@@ -9,6 +9,7 @@ import {
 } from 'react-icons/ri'
 
 import Styles from './sidebar.module.scss'
+import { useEffect } from 'react'
 
 export default function Sidebar({ sidebarState }) {
   const router = useRouter()
@@ -38,7 +39,7 @@ export default function Sidebar({ sidebarState }) {
 
   const styleMenu = path => classNames(
     Styles.menu, {
-      [Styles.active]: router.asPath === path
+      [Styles.active]: router.pathname === path
     }
   )
 

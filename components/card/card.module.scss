@@ -1,0 +1,27 @@
+.container {
+  @apply
+    flex
+    min-w-[20rem]
+    divide-y
+    bg-white
+    flex-col;
+}
+
+.card {
+  &_head {
+    @apply
+      flex
+      p-4
+      items-center
+      justify-between;
+  }
+
+  &_content {
+    @apply
+      flex
+      p-4
+      flex-row
+      lg:flex-col
+      items-start;
+  }
+}

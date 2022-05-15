@@ -1,0 +1,46 @@
+
+.list {
+  &_wrapper {
+    @apply
+      flex
+      w-full
+      flex-col
+      items-center
+      transition-all
+      duration-300;
+  }
+
+  &_card {
+    @apply
+      flex
+      w-full
+      px-6
+      lg:px-12
+      overflow-auto
+      flex-col
+      lg:flex-row;
+  }
+
+  &_pagination {
+    @apply
+      flex
+      w-full
+      lg:w-[30rem]
+      p-6
+      lg:p-12
+      items-center
+      justify-between;
+  }
+
+  &_button {
+    @apply
+    flex
+    text-2xl 
+    items-center;
+
+    &.disabled {
+      @apply
+        text-gray-400;
+    }
+  }
+}

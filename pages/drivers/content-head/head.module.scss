@@ -1,0 +1,24 @@
+.head {
+  &_wrapper {
+    @apply
+      flex
+      w-full
+      p-6
+      lg:p-12
+      items-center
+      transition-all
+      duration-300;
+  }
+
+  &_content {
+    @apply
+      flex
+      w-full
+      p-6
+      bg-white
+      xl:items-center
+      justify-between
+      flex-col
+      xl:flex-row;
+  }
+}

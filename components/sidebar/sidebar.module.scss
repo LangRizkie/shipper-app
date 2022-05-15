@@ -1,0 +1,53 @@
+.container {
+  @apply
+    flex
+    fixed
+    w-full
+    max-w-xs
+    h-full
+    left-0
+    top-0
+    bg-white
+    transition-all
+    duration-300;
+
+    &.closed {
+      @apply
+        -left-full;
+    }
+}
+
+.wrapper {
+  @apply
+    flex
+    w-full
+    pt-28
+    flex-col;
+
+  & .menu {
+    @apply
+      flex
+      relative
+      px-6
+      py-3
+      font-semibold
+      text-black
+      items-center;
+
+      &.active {
+        @apply
+          text-red-500;
+
+        &::before {
+          content: '';
+
+          @apply
+            absolute
+            w-1
+            h-full
+            left-0
+            bg-red-500;
+        }
+      }
+  }
+}

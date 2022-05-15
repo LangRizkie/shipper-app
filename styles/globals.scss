@@ -1,0 +1,52 @@
+
+.layout {
+  @apply
+    flex
+    w-full
+    flex-col;
+}
+
+.main {
+  @apply
+    pl-0
+    md:pl-screen-xs
+    pt-24
+    transition-all
+    duration-300;
+}
+
+label {
+  @apply
+    relative;
+
+  &.input-search {
+    &::before {
+      font-family: 'Segoe UI Symbol';
+      content: '🔍︎';
+
+      @apply
+        flex
+        absolute
+        h-full
+        px-4
+        left-0
+        text-xl
+        text-red-500
+        items-center;
+    }
+
+    input {
+      @apply
+        pl-12;
+    }
+  }
+}
+
+input {
+  @apply
+    w-44
+    border
+    rounded-md
+    border-slate-300
+    p-4;
+}

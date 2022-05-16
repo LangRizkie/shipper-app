@@ -1,17 +1,19 @@
-import { useRouter } from 'next/router'
+import debounce from 'lodash.debounce'
+import { useMemo } from 'react'
 import Styles from './head.module.scss'
 
 export default function Head({ listDrivers, setListDriversFilter }) {
-  const router = useRouter()
-
-  const changeHandler = value => {
+  const changeHandler = event => {
     const results = listDrivers.results.filter(drivers => 
-      drivers.name.first.toLowerCase().includes(value.toLowerCase()))
+      drivers.name.first.toLowerCase().includes(event.target.value.toLowerCase()))
     
     setListDriversFilter({
       ...listDrivers, results: results || []
     })  
   }
+
+  const debouncedChangeHandler =
+    useMemo(() => debounce(changeHandler, 300))
 
   return (
     <div className={Styles.headWrapper}>
@@ -24,7 +26,7 @@ export default function Head({ listDrivers, setListDriversFilter }) {
         </div>
         <div className='flex items-center flex-col xl:flex-row'>
           <label className='input-search w-full my-4 xl:my-0'>
-            <input type='text' onChange={(e) => changeHandler(e.target.value)}
+            <input type='text' onChange={debouncedChangeHandler}
               className='w-full xl:w-44' placeholder='Cari Driver' />
           </label>
           <button className='w-full p-4 m-0 xl:ml-4 rounded-md uppercase 
